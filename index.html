@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Undangan Khitan</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{ margin:0; padding:0; box-sizing:border-box; }
+
+:root{
+  --coklat: #5a1f00;
+  --coklat2: #7a2d00;
+  --emas: #c89b3c;
+  --emas-muda: #e8c97a;
+  --krem: #ead7c0;
+  --krem2: #f5ede0;
+}
+
+body{
+  font-family:'Poppins',sans-serif;
+  background: var(--krem);
+  overflow-x:hidden;
+}
+
+/* ===== BATIK SVG PATTERN ===== */
+.batik-bg{
+  position:fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  pointer-events:none;
+  z-index:0;
+  opacity:0.07;
+}
+
+/* ===== COVER CARD ===== */
+.container{
+  width:100%;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:30px 16px;
+  position:relative;
+  z-index:1;
+}
+
+.card{
+  width:100%;
+  max-width:420px;
+  background: var(--coklat);
+  border-radius:200px 200px 30px 30px;
+  position:relative;
+  overflow:hidden;
+  border:4px solid var(--emas);
+  padding:50px 24px 60px;
+  text-align:center;
+  color:white;
+  animation: fadeUp 1.2s ease forwards;
+  box-shadow: 0 20px 60px rgba(90,31,0,0.35);
+}
+
+.card::after{
+  content:'';
+  position:absolute;
+  top:8px; left:8px; right:8px; bottom:8px;
+  border-radius:196px 196px 24px 24px;
+  border:1px solid rgba(200,155,60,0.25);
+  pointer-events:none;
+  z-index:0;
+}
+
+.card-batik-top{
+  position:absolute;
+  top:0; left:0;
+  width:100%; height:200px;
+  opacity:0.12;
+  pointer-events:none;
+}
+
+.card-batik-bottom{
+  position:absolute;
+  bottom:0; left:0;
+  width:100%; height:160px;
+  opacity:0.12;
+  pointer-events:none;
+  transform:rotate(180deg);
+}
+
+.floral-top{
+  position:relative;
+  z-index:2;
+  margin-bottom:10px;
+}
+
+.label-tasyakuran{
+  font-size:10px;
+  letter-spacing:5px;
+  text-transform:uppercase;
+  color: var(--emas-muda);
+  opacity:0.85;
+  margin-bottom:4px;
+  position:relative; z-index:2;
+}
+
+.title-khitan{
+  font-family:'Great Vibes',cursive;
+  font-size:72px;
+  color: var(--emas);
+  line-height:1;
+  text-shadow: 0 2px 12px rgba(200,155,60,0.4);
+  position:relative; z-index:2;
+}
+
+.photo-frame{
+  width:210px;
+  height:210px;
+  border-radius:50%;
+  overflow:hidden;
+  border:5px solid var(--emas);
+  margin:18px auto;
+  position:relative;
+  z-index:2;
+  animation: zoomIn 1.6s ease forwards;
+  box-shadow: 0 0 0 3px rgba(200,155,60,0.2), 0 8px 30px rgba(0,0,0,0.3);
+  background: linear-gradient(135deg, #7a3a00, #3d1500);
+  display:flex; align-items:center; justify-content:center;
+}
+
+.photo-frame img{
+  width:100%; height:100%; object-fit:cover;
+}
+
+.photo-placeholder{
+  opacity:0.3;
+}
+
+.orn-row{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  margin:12px 0;
+  position:relative; z-index:2;
+}
+.orn-line{ flex:1; max-width:60px; height:1px; background:linear-gradient(90deg, transparent, var(--emas)); }
+.orn-line.r{ background:linear-gradient(90deg, var(--emas), transparent); }
+.orn-dot{ width:5px; height:5px; background:var(--emas); transform:rotate(45deg); }
+
+.child-name{
+  font-family:'Great Vibes',cursive;
+  font-size:54px;
+  color: var(--emas);
+  position:relative; z-index:2;
+  text-shadow: 0 2px 8px rgba(200,155,60,0.3);
+  line-height:1.1;
+}
+
+.child-bin{
+  font-size:11px;
+  letter-spacing:2px;
+  color:rgba(232,201,122,0.65);
+  margin-top:4px;
+  position:relative; z-index:2;
+  text-transform:uppercase;
+}
+
+.card-date-box{
+  margin:20px auto 0;
+  border:1px solid rgba(200,155,60,0.45);
+  display:inline-block;
+  padding:12px 32px;
+  position:relative; z-index:2;
+}
+.card-date-box::before{ content:''; position:absolute; top:-5px; left:-5px; width:10px; height:10px; border-top:1px solid var(--emas); border-left:1px solid var(--emas); }
+.card-date-box::after{ content:''; position:absolute; bottom:-5px; right:-5px; width:10px; height:10px; border-bottom:1px solid var(--emas); border-right:1px solid var(--emas); }
+
+.card-date-text{
+  font-size:13px;
+  font-weight:500;
+  letter-spacing:3px;
+  color: var(--emas-muda);
+  text-transform:uppercase;
+}
+
+.corner-flower{
+  position:absolute;
+  z-index:1;
+  opacity:0.45;
+}
+.corner-flower.tl{ top:14px; left:14px; }
+.corner-flower.tr{ top:14px; right:14px; transform:scaleX(-1); }
+
+/* ===== SCROLL SECTIONS ===== */
+.scroll-section{
+  width:100%;
+  padding:40px 16px 60px;
+  text-align:center;
+  position:relative;
+  z-index:1;
+}
+
+.section-box{
+  max-width:420px;
+  margin:0 auto 24px;
+  background: var(--coklat);
+  color:white;
+  padding:32px 28px;
+  border-radius:20px;
+  border:2px solid var(--emas);
+  position:relative;
+  overflow:hidden;
+  animation: fadeUp 1.2s ease forwards;
+  box-shadow: 0 10px 40px rgba(90,31,0,0.2);
+}
+
+.box-batik{
+  position:absolute;
+  bottom:-10px; right:-10px;
+  opacity:0.12;
+  pointer-events:none;
+}
+
+.section-title{
+  font-family:'Great Vibes',cursive;
+  font-size:44px;
+  color: var(--emas);
+  margin-bottom:14px;
+}
+
+.section-box p{
+  line-height:2;
+  font-size:14px;
+  font-weight:300;
+  color:rgba(255,255,255,0.88);
+}
+
+.section-box p strong{
+  color: var(--emas-muda);
+  font-weight:500;
+}
+
+.detail-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:12px;
+  margin-top:16px;
+  text-align:left;
+}
+
+.detail-item{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(200,155,60,0.2);
+  border-radius:10px;
+  padding:12px 14px;
+}
+
+.detail-icon{
+  font-size:18px;
+  margin-top:2px;
+  flex-shrink:0;
+}
+
+.detail-label{
+  font-size:9px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color: var(--emas);
+  margin-bottom:3px;
+}
+
+.detail-val{
+  font-size:13px;
+  font-weight:500;
+  color:white;
+  line-height:1.5;
+}
+
+.btn-map{
+  display:inline-block;
+  margin-top:20px;
+  padding:12px 32px;
+  background: var(--emas);
+  color: var(--coklat);
+  text-decoration:none;
+  border-radius:30px;
+  font-weight:600;
+  font-size:13px;
+  letter-spacing:1px;
+  transition:all 0.3s;
+  box-shadow: 0 4px 15px rgba(200,155,60,0.35);
+}
+.btn-map:hover{ background: var(--emas-muda); transform:translateY(-2px); }
+
+.closing-box{
+  background: linear-gradient(160deg, #3d1500, #5a1f00);
+}
+
+.closing-ayat{
+  font-family:'Playfair Display',serif;
+  font-style:italic;
+  font-size:14px;
+  color:rgba(232,201,122,0.75);
+  line-height:2;
+  margin-bottom:8px;
+}
+
+.closing-sumber{
+  font-size:10px;
+  letter-spacing:3px;
+  color:rgba(200,155,60,0.5);
+  text-transform:uppercase;
+  margin-bottom:20px;
+}
+
+.closing-family{
+  font-family:'Great Vibes',cursive;
+  font-size:38px;
+  color: var(--emas);
+  margin-top:16px;
+}
+
+.closing-ttd{
+  font-size:11px;
+  letter-spacing:2px;
+  color:rgba(232,201,122,0.5);
+  text-transform:uppercase;
+  margin-top:4px;
+}
+
+.floral-divider{
+  margin:8px auto 24px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+}
+.fd-line{ flex:1; max-width:70px; height:1px; background:rgba(200,155,60,0.35); }
+
+/* ===== NOMOR REKENING ===== */
+.rekening-intro{
+  font-size:13px;
+  font-weight:300;
+  color:rgba(255,255,255,0.75);
+  line-height:1.8;
+  margin-bottom:20px;
+}
+
+.rekening-grid{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+.rekening-card{
+  background: rgba(255,255,255,0.06);
+  border:1px solid rgba(200,155,60,0.35);
+  border-radius:14px;
+  padding:16px 18px;
+  text-align:left;
+  position:relative;
+  overflow:hidden;
+}
+
+.rekening-card::before{
+  content:'';
+  position:absolute;
+  top:0; left:0;
+  width:4px; height:100%;
+  background: linear-gradient(180deg, var(--emas), var(--emas-muda));
+  border-radius:4px 0 0 4px;
+}
+
+.rek-bank{
+  font-size:10px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color: var(--emas);
+  margin-bottom:6px;
+}
+
+.rek-nomor{
+  font-size:20px;
+  font-weight:600;
+  color:white;
+  letter-spacing:2px;
+  margin-bottom:4px;
+  font-family:'Poppins',sans-serif;
+}
+
+.rek-nama{
+  font-size:12px;
+  color:rgba(232,201,122,0.7);
+  font-weight:300;
+}
+
+.btn-copy{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  margin-top:12px;
+  padding:7px 18px;
+  background: rgba(200,155,60,0.15);
+  border:1px solid rgba(200,155,60,0.4);
+  color: var(--emas-muda);
+  border-radius:20px;
+  font-size:11px;
+  letter-spacing:1px;
+  cursor:pointer;
+  transition:all 0.25s;
+  font-family:'Poppins',sans-serif;
+  font-weight:500;
+}
+.btn-copy:hover{
+  background: rgba(200,155,60,0.3);
+  transform:translateY(-1px);
+}
+.btn-copy.copied{
+  background: rgba(100,200,100,0.2);
+  border-color:rgba(100,200,100,0.5);
+  color:#90e090;
+}
+
+/* ===== FOTO KELUARGA ===== */
+.family-photo-box{
+  background: linear-gradient(160deg, #2e1000, #4a1800);
+  border-color: var(--emas);
+}
+
+.family-photo-frame{
+  width:100%;
+  aspect-ratio: 4/3;
+  border-radius:14px;
+  overflow:hidden;
+  border:3px solid rgba(200,155,60,0.5);
+  margin-top:16px;
+  position:relative;
+  background: linear-gradient(135deg, #5a2500, #2e1000);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.family-photo-frame img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.family-photo-placeholder{
+  text-align:center;
+  padding:20px;
+}
+
+.family-photo-placeholder svg{
+  opacity:0.25;
+  margin-bottom:10px;
+}
+
+.family-photo-placeholder p{
+  font-size:11px;
+  letter-spacing:2px;
+  color:rgba(232,201,122,0.4);
+  text-transform:uppercase;
+  line-height:1.8 !important;
+}
+
+.family-caption{
+  font-family:'Playfair Display',serif;
+  font-style:italic;
+  font-size:13px;
+  color:rgba(232,201,122,0.65);
+  margin-top:14px;
+  line-height:1.8;
+}
+
+/* Corner decoration on family photo frame */
+.family-photo-frame::before{
+  content:'';
+  position:absolute;
+  top:6px; left:6px; right:6px; bottom:6px;
+  border:1px solid rgba(200,155,60,0.15);
+  border-radius:10px;
+  pointer-events:none;
+  z-index:1;
+}
+
+@keyframes fadeUp{
+  from{ opacity:0; transform:translateY(30px); }
+  to{ opacity:1; transform:translateY(0); }
+}
+@keyframes zoomIn{
+  from{ transform:scale(0.75); opacity:0; }
+  to{ transform:scale(1); opacity:1; }
+}
+
+.animate-scroll{
+  opacity:0;
+  transform:translateY(20px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.animate-scroll.show{
+  opacity:1;
+  transform:translateY(0);
+}
+</style>
+</head>
+<body>
+
+<!-- Global batik background -->
+<svg class="batik-bg" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="batikPat" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
+      <ellipse cx="20" cy="20" rx="8" ry="12" fill="none" stroke="#c89b3c" stroke-width="0.8"/>
+      <ellipse cx="20" cy="20" rx="12" ry="8" fill="none" stroke="#c89b3c" stroke-width="0.8"/>
+      <circle cx="20" cy="20" r="2.5" fill="#c89b3c" opacity="0.6"/>
+      <ellipse cx="60" cy="20" rx="8" ry="12" fill="none" stroke="#c89b3c" stroke-width="0.8"/>
+      <ellipse cx="60" cy="20" rx="12" ry="8" fill="none" stroke="#c89b3c" stroke-width="0.8"/>
+      <circle cx="60" cy="20" r="2.5" fill="#c89b3c" opacity="0.6"/>
+      <ellipse cx="20" cy="60" rx="8" ry="12" fill="none" stroke="#c89b3c" stroke-width="0.8"/>
+      <ellipse cx="20" cy="60" rx="12" ry="8" fill="none" stroke="#c89b3c" stroke-width="0.8"/>
+      <circle cx="20" cy="60" r="2.5" fill="#c89b3c" opacity="0.6"/>
+      <ellipse cx="60" cy="60" rx="8" ry="12" fill="none" stroke="#c89b3c" stroke-width="0.8"/>
+      <ellipse cx="60" cy="60" rx="12" ry="8" fill="none" stroke="#c89b3c" stroke-width="0.8"/>
+      <circle cx="60" cy="60" r="2.5" fill="#c89b3c" opacity="0.6"/>
+      <path d="M0 40 Q10 30 20 40 Q30 50 40 40 Q50 30 60 40 Q70 50 80 40" fill="none" stroke="#c89b3c" stroke-width="0.5" opacity="0.5"/>
+      <circle cx="40" cy="40" r="1.5" fill="#c89b3c" opacity="0.4"/>
+      <circle cx="0" cy="0" r="1.5" fill="#c89b3c" opacity="0.4"/>
+      <circle cx="80" cy="0" r="1.5" fill="#c89b3c" opacity="0.4"/>
+      <circle cx="0" cy="80" r="1.5" fill="#c89b3c" opacity="0.4"/>
+      <circle cx="80" cy="80" r="1.5" fill="#c89b3c" opacity="0.4"/>
+    </pattern>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#batikPat)"/>
+</svg>
+
+<!-- ===== COVER CARD ===== -->
+<div class="container">
+  <div class="card">
+
+    <svg class="card-batik-top" viewBox="0 0 420 200" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="bTop" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+          <ellipse cx="15" cy="15" rx="6" ry="9" fill="none" stroke="#e8c97a" stroke-width="1"/>
+          <ellipse cx="15" cy="15" rx="9" ry="6" fill="none" stroke="#e8c97a" stroke-width="1"/>
+          <circle cx="15" cy="15" r="2" fill="#e8c97a"/>
+          <ellipse cx="45" cy="15" rx="6" ry="9" fill="none" stroke="#e8c97a" stroke-width="1"/>
+          <ellipse cx="45" cy="15" rx="9" ry="6" fill="none" stroke="#e8c97a" stroke-width="1"/>
+          <circle cx="45" cy="15" r="2" fill="#e8c97a"/>
+          <ellipse cx="15" cy="45" rx="6" ry="9" fill="none" stroke="#e8c97a" stroke-width="1"/>
+          <ellipse cx="15" cy="45" rx="9" ry="6" fill="none" stroke="#e8c97a" stroke-width="1"/>
+          <circle cx="15" cy="45" r="2" fill="#e8c97a"/>
+          <ellipse cx="45" cy="45" rx="6" ry="9" fill="none" stroke="#e8c97a" stroke-width="1"/>
+          <ellipse cx="45" cy="45" rx="9" ry="6" fill="none" stroke="#e8c97a" stroke-width="1"/>
+          <circle cx="45" cy="45" r="2" fill="#e8c97a"/>
+        </pattern>
+      </defs>
+      <rect width="420" height="200" fill="url(#bTop)"/>
+    </svg>
+
+    <svg class="card-batik-bottom" viewBox="0 0 420 160" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="bBot" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+          <ellipse cx="15" cy="15" rx="6" ry="9" fill="none" stroke="#e8c97a" stroke-width="1"/>
+          <ellipse cx="15" cy="15" rx="9" ry="6" fill="none" stroke="#e8c97a" stroke-width="1"/>
+          <circle cx="15" cy="15" r="2" fill="#e8c97a"/>
+          <ellipse cx="45" cy="45" rx="6" ry="9" fill="none" stroke="#e8c97a" stroke-width="1"/>
+          <ellipse cx="45" cy="45" rx="9" ry="6" fill="none" stroke="#e8c97a" stroke-width="1"/>
+          <circle cx="45" cy="45" r="2" fill="#e8c97a"/>
+        </pattern>
+      </defs>
+      <rect width="420" height="160" fill="url(#bBot)"/>
+    </svg>
+
+    <!-- Corner flowers -->
+    <svg class="corner-flower tl" width="70" height="70" viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg">
+      <g opacity="1">
+        <ellipse cx="20" cy="10" rx="7" ry="11" fill="#c89b3c" transform="rotate(0,20,20)"/>
+        <ellipse cx="20" cy="10" rx="7" ry="11" fill="#c89b3c" transform="rotate(45,20,20)"/>
+        <ellipse cx="20" cy="10" rx="7" ry="11" fill="#c89b3c" transform="rotate(90,20,20)"/>
+        <ellipse cx="20" cy="10" rx="7" ry="11" fill="#c89b3c" transform="rotate(135,20,20)"/>
+        <circle cx="20" cy="20" r="5" fill="#e8c97a"/>
+        <path d="M27 20 Q45 15 65 5" stroke="#c89b3c" stroke-width="1.5" fill="none"/>
+        <path d="M35 18 Q38 10 34 4" stroke="#c89b3c" stroke-width="1" fill="none"/>
+        <ellipse cx="52" cy="10" rx="6" ry="3" fill="#c89b3c" opacity="0.7" transform="rotate(-30,52,10)"/>
+        <path d="M27 25 Q15 40 8 65" stroke="#c89b3c" stroke-width="1.5" fill="none"/>
+        <ellipse cx="13" cy="48" rx="6" ry="3" fill="#c89b3c" opacity="0.7" transform="rotate(60,13,48)"/>
+      </g>
+    </svg>
+
+    <svg class="corner-flower tr" width="70" height="70" viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg">
+      <g opacity="1">
+        <ellipse cx="20" cy="10" rx="7" ry="11" fill="#c89b3c" transform="rotate(0,20,20)"/>
+        <ellipse cx="20" cy="10" rx="7" ry="11" fill="#c89b3c" transform="rotate(45,20,20)"/>
+        <ellipse cx="20" cy="10" rx="7" ry="11" fill="#c89b3c" transform="rotate(90,20,20)"/>
+        <ellipse cx="20" cy="10" rx="7" ry="11" fill="#c89b3c" transform="rotate(135,20,20)"/>
+        <circle cx="20" cy="20" r="5" fill="#e8c97a"/>
+        <path d="M27 20 Q45 15 65 5" stroke="#c89b3c" stroke-width="1.5" fill="none"/>
+        <ellipse cx="52" cy="10" rx="6" ry="3" fill="#c89b3c" opacity="0.7" transform="rotate(-30,52,10)"/>
+        <path d="M27 25 Q15 40 8 65" stroke="#c89b3c" stroke-width="1.5" fill="none"/>
+        <ellipse cx="13" cy="48" rx="6" ry="3" fill="#c89b3c" opacity="0.7" transform="rotate(60,13,48)"/>
+      </g>
+    </svg>
+
+    <!-- Floral top crown -->
+    <div class="floral-top">
+      <svg width="220" height="80" viewBox="0 0 220 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g transform="translate(110,30)">
+          <ellipse cx="0" cy="-14" rx="6" ry="10" fill="#c89b3c" transform="rotate(0)"/>
+          <ellipse cx="0" cy="-14" rx="6" ry="10" fill="#c89b3c" transform="rotate(45)"/>
+          <ellipse cx="0" cy="-14" rx="6" ry="10" fill="#c89b3c" transform="rotate(90)"/>
+          <ellipse cx="0" cy="-14" rx="6" ry="10" fill="#c89b3c" transform="rotate(135)"/>
+          <ellipse cx="0" cy="-14" rx="6" ry="10" fill="#c89b3c" transform="rotate(180)"/>
+          <ellipse cx="0" cy="-14" rx="6" ry="10" fill="#c89b3c" transform="rotate(225)"/>
+          <ellipse cx="0" cy="-14" rx="6" ry="10" fill="#c89b3c" transform="rotate(270)"/>
+          <ellipse cx="0" cy="-14" rx="6" ry="10" fill="#c89b3c" transform="rotate(315)"/>
+          <circle cx="0" cy="0" r="7" fill="#e8c97a"/>
+        </g>
+        <g transform="translate(60,40)">
+          <ellipse cx="0" cy="-10" rx="5" ry="8" fill="#c89b3c" transform="rotate(0)"/>
+          <ellipse cx="0" cy="-10" rx="5" ry="8" fill="#c89b3c" transform="rotate(60)"/>
+          <ellipse cx="0" cy="-10" rx="5" ry="8" fill="#c89b3c" transform="rotate(120)"/>
+          <ellipse cx="0" cy="-10" rx="5" ry="8" fill="#c89b3c" transform="rotate(180)"/>
+          <ellipse cx="0" cy="-10" rx="5" ry="8" fill="#c89b3c" transform="rotate(240)"/>
+          <ellipse cx="0" cy="-10" rx="5" ry="8" fill="#c89b3c" transform="rotate(300)"/>
+          <circle cx="0" cy="0" r="5" fill="#e8c97a"/>
+        </g>
+        <g transform="translate(160,40)">
+          <ellipse cx="0" cy="-10" rx="5" ry="8" fill="#c89b3c" transform="rotate(0)"/>
+          <ellipse cx="0" cy="-10" rx="5" ry="8" fill="#c89b3c" transform="rotate(60)"/>
+          <ellipse cx="0" cy="-10" rx="5" ry="8" fill="#c89b3c" transform="rotate(120)"/>
+          <ellipse cx="0" cy="-10" rx="5" ry="8" fill="#c89b3c" transform="rotate(180)"/>
+          <ellipse cx="0" cy="-10" rx="5" ry="8" fill="#c89b3c" transform="rotate(240)"/>
+          <ellipse cx="0" cy="-10" rx="5" ry="8" fill="#c89b3c" transform="rotate(300)"/>
+          <circle cx="0" cy="0" r="5" fill="#e8c97a"/>
+        </g>
+        <g transform="translate(20,50)">
+          <ellipse cx="0" cy="-7" rx="3" ry="5" fill="#c89b3c" transform="rotate(0)"/>
+          <ellipse cx="0" cy="-7" rx="3" ry="5" fill="#c89b3c" transform="rotate(60)"/>
+          <ellipse cx="0" cy="-7" rx="3" ry="5" fill="#c89b3c" transform="rotate(120)"/>
+          <ellipse cx="0" cy="-7" rx="3" ry="5" fill="#c89b3c" transform="rotate(180)"/>
+          <ellipse cx="0" cy="-7" rx="3" ry="5" fill="#c89b3c" transform="rotate(240)"/>
+          <ellipse cx="0" cy="-7" rx="3" ry="5" fill="#c89b3c" transform="rotate(300)"/>
+          <circle cx="0" cy="0" r="3.5" fill="#e8c97a"/>
+        </g>
+        <g transform="translate(200,50)">
+          <ellipse cx="0" cy="-7" rx="3" ry="5" fill="#c89b3c" transform="rotate(0)"/>
+          <ellipse cx="0" cy="-7" rx="3" ry="5" fill="#c89b3c" transform="rotate(60)"/>
+          <ellipse cx="0" cy="-7" rx="3" ry="5" fill="#c89b3c" transform="rotate(120)"/>
+          <ellipse cx="0" cy="-7" rx="3" ry="5" fill="#c89b3c" transform="rotate(180)"/>
+          <ellipse cx="0" cy="-7" rx="3" ry="5" fill="#c89b3c" transform="rotate(240)"/>
+          <ellipse cx="0" cy="-7" rx="3" ry="5" fill="#c89b3c" transform="rotate(300)"/>
+          <circle cx="0" cy="0" r="3.5" fill="#e8c97a"/>
+        </g>
+        <path d="M110 30 Q80 55 60 40" stroke="#c89b3c" stroke-width="1.2" fill="none"/>
+        <path d="M110 30 Q140 55 160 40" stroke="#c89b3c" stroke-width="1.2" fill="none"/>
+        <path d="M60 40 Q40 58 20 50" stroke="#c89b3c" stroke-width="1" fill="none"/>
+        <path d="M160 40 Q180 58 200 50" stroke="#c89b3c" stroke-width="1" fill="none"/>
+        <ellipse cx="85" cy="48" rx="9" ry="4" fill="#c89b3c" opacity="0.6" transform="rotate(-20,85,48)"/>
+        <ellipse cx="135" cy="48" rx="9" ry="4" fill="#c89b3c" opacity="0.6" transform="rotate(20,135,48)"/>
+        <ellipse cx="40" cy="56" rx="7" ry="3" fill="#c89b3c" opacity="0.5" transform="rotate(-30,40,56)"/>
+        <ellipse cx="180" cy="56" rx="7" ry="3" fill="#c89b3c" opacity="0.5" transform="rotate(30,180,56)"/>
+      </svg>
+    </div>
+
+    <p class="label-tasyakuran">Tasyakuran</p>
+    <div class="title-khitan">Khitan</div>
+
+   <div class="photo-frame">
+  <img src="image/sendiri.png" alt="Foto Khitan" style="min-height: 100%; object-fit: contain; object-position: center 10%;">
+</div>
+    
+
+    <div class="orn-row">
+      <div class="orn-line"></div>
+      <svg width="28" height="28" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
+        <g transform="translate(14,14)">
+          <ellipse cx="0" cy="-7" rx="3" ry="5" fill="#c89b3c" transform="rotate(0)"/>
+          <ellipse cx="0" cy="-7" rx="3" ry="5" fill="#c89b3c" transform="rotate(60)"/>
+          <ellipse cx="0" cy="-7" rx="3" ry="5" fill="#c89b3c" transform="rotate(120)"/>
+          <ellipse cx="0" cy="-7" rx="3" ry="5" fill="#c89b3c" transform="rotate(180)"/>
+          <ellipse cx="0" cy="-7" rx="3" ry="5" fill="#c89b3c" transform="rotate(240)"/>
+          <ellipse cx="0" cy="-7" rx="3" ry="5" fill="#c89b3c" transform="rotate(300)"/>
+          <circle cx="0" cy="0" r="4" fill="#e8c97a"/>
+        </g>
+      </svg>
+      <div class="orn-line r"></div>
+    </div>
+
+    <div class="child-name">Ashad Firaz Dhiaulhag</div>
+    <div class="child-bin">Putra dari Bpk.Joko Juwono(Joko)/Ibu Rinawati(Rina)</div>
+
+    <div class="orn-row" style="margin-top:16px;">
+      <div class="orn-line"></div>
+      <div class="orn-dot"></div>
+      <div class="orn-line r"></div>
+    </div>
+
+    <div class="card-date-box">
+      <div class="card-date-text">Sabtu, 13 Juni 2026</div>
+    </div>
+
+    <svg style="position:relative;z-index:2;margin-top:28px;" width="180" height="50" viewBox="0 0 180 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g transform="translate(90,20)">
+        <ellipse cx="0" cy="-10" rx="4" ry="7" fill="#c89b3c" transform="rotate(0)"/>
+        <ellipse cx="0" cy="-10" rx="4" ry="7" fill="#c89b3c" transform="rotate(72)"/>
+        <ellipse cx="0" cy="-10" rx="4" ry="7" fill="#c89b3c" transform="rotate(144)"/>
+        <ellipse cx="0" cy="-10" rx="4" ry="7" fill="#c89b3c" transform="rotate(216)"/>
+        <ellipse cx="0" cy="-10" rx="4" ry="7" fill="#c89b3c" transform="rotate(288)"/>
+        <circle cx="0" cy="0" r="4" fill="#e8c97a"/>
+      </g>
+      <g transform="translate(40,28)">
+        <ellipse cx="0" cy="-7" rx="3" ry="5" fill="#c89b3c" transform="rotate(0)"/>
+        <ellipse cx="0" cy="-7" rx="3" ry="5" fill="#c89b3c" transform="rotate(60)"/>
+        <ellipse cx="0" cy="-7" rx="3" ry="5" fill="#c89b3c" transform="rotate(120)"/>
+        <ellipse cx="0" cy="-7" rx="3" ry="5" fill="#c89b3c" transform="rotate(180)"/>
+        <ellipse cx="0" cy="-7" rx="3" ry="5" fill="#c89b3c" transform="rotate(240)"/>
+        <ellipse cx="0" cy="-7" rx="3" ry="5" fill="#c89b3c" transform="rotate(300)"/>
+        <circle cx="0" cy="0" r="3" fill="#e8c97a"/>
+      </g>
+      <g transform="translate(140,28)">
+        <ellipse cx="0" cy="-7" rx="3" ry="5" fill="#c89b3c" transform="rotate(0)"/>
+        <ellipse cx="0" cy="-7" rx="3" ry="5" fill="#c89b3c" transform="rotate(60)"/>
+        <ellipse cx="0" cy="-7" rx="3" ry="5" fill="#c89b3c" transform="rotate(120)"/>
+        <ellipse cx="0" cy="-7" rx="3" ry="5" fill="#c89b3c" transform="rotate(180)"/>
+        <ellipse cx="0" cy="-7" rx="3" ry="5" fill="#c89b3c" transform="rotate(240)"/>
+        <ellipse cx="0" cy="-7" rx="3" ry="5" fill="#c89b3c" transform="rotate(300)"/>
+        <circle cx="0" cy="0" r="3" fill="#e8c97a"/>
+      </g>
+      <path d="M40 28 Q65 18 90 20" stroke="#c89b3c" stroke-width="1" fill="none"/>
+      <path d="M140 28 Q115 18 90 20" stroke="#c89b3c" stroke-width="1" fill="none"/>
+      <path d="M10 42 Q25 28 40 28" stroke="#c89b3c" stroke-width="1" fill="none" opacity="0.6"/>
+      <path d="M170 42 Q155 28 140 28" stroke="#c89b3c" stroke-width="1" fill="none" opacity="0.6"/>
+      <ellipse cx="62" cy="18" rx="7" ry="3" fill="#c89b3c" opacity="0.55" transform="rotate(-15,62,18)"/>
+      <ellipse cx="118" cy="18" rx="7" ry="3" fill="#c89b3c" opacity="0.55" transform="rotate(15,118,18)"/>
+    </svg>
+
+  </div>
+</div>
+
+<!-- ===== SCROLL SECTIONS ===== -->
+<div class="scroll-section">
+
+  <!-- Floral divider -->
+  <div class="floral-divider animate-scroll">
+    <div class="fd-line"></div>
+    <svg width="34" height="34" viewBox="0 0 34 34" xmlns="http://www.w3.org/2000/svg">
+      <g transform="translate(17,17)">
+        <ellipse cx="0" cy="-8" rx="3.5" ry="6" fill="#c89b3c" transform="rotate(0)"/>
+        <ellipse cx="0" cy="-8" rx="3.5" ry="6" fill="#c89b3c" transform="rotate(60)"/>
+        <ellipse cx="0" cy="-8" rx="3.5" ry="6" fill="#c89b3c" transform="rotate(120)"/>
+        <ellipse cx="0" cy="-8" rx="3.5" ry="6" fill="#c89b3c" transform="rotate(180)"/>
+        <ellipse cx="0" cy="-8" rx="3.5" ry="6" fill="#c89b3c" transform="rotate(240)"/>
+        <ellipse cx="0" cy="-8" rx="3.5" ry="6" fill="#c89b3c" transform="rotate(300)"/>
+        <circle cx="0" cy="0" r="4.5" fill="#e8c97a"/>
+      </g>
+    </svg>
+    <div class="fd-line"></div>
+  </div>
+
+  <!-- Salam -->
+  <div class="section-box animate-scroll">
+    <svg class="box-batik" width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <g transform="translate(80,80)">
+        <ellipse cx="0" cy="-18" rx="6" ry="10" fill="#e8c97a" transform="rotate(0)"/>
+        <ellipse cx="0" cy="-18" rx="6" ry="10" fill="#e8c97a" transform="rotate(60)"/>
+        <ellipse cx="0" cy="-18" rx="6" ry="10" fill="#e8c97a" transform="rotate(120)"/>
+        <ellipse cx="0" cy="-18" rx="6" ry="10" fill="#e8c97a" transform="rotate(180)"/>
+        <ellipse cx="0" cy="-18" rx="6" ry="10" fill="#e8c97a" transform="rotate(240)"/>
+        <ellipse cx="0" cy="-18" rx="6" ry="10" fill="#e8c97a" transform="rotate(300)"/>
+        <circle cx="0" cy="0" r="7" fill="#e8c97a"/>
+      </g>
+    </svg>
+    <div class="section-title">Assalamu'alaikum</div>
+    <div class="orn-row" style="margin-bottom:14px;">
+      <div class="orn-line"></div><div class="orn-dot"></div><div class="orn-line r"></div>
+    </div>
+    <p>
+      Dengan memohon rahmat dan ridho <strong>Allah SWT</strong>,<br>
+      kami mengundang Bapak/Ibu/Saudara/i<br>
+      untuk hadir dan memberikan doa restu<br>
+      dalam acara <strong>Tasyakuran Khitan</strong> putra kami.
+    </p>
+  </div>
+
+  <!-- Detail Acara -->
+  <div class="section-box animate-scroll">
+    <div class="section-title">Detail Acara</div>
+    <div class="orn-row" style="margin-bottom:18px;">
+      <div class="orn-line"></div><div class="orn-dot"></div><div class="orn-line r"></div>
+    </div>
+    <div class="detail-grid">
+      <div class="detail-item">
+        <div class="detail-icon">📅</div>
+        <div>
+          <div class="detail-label">Hari & Tanggal</div>
+          <div class="detail-val">Sabtu, 13 Juni 2026</div>
+        </div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-icon">🕐</div>
+        <div>
+          <div class="detail-label">Waktu</div>
+          <div class="detail-val">09.00 WIB – Selesai</div>
+        </div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-icon">📍</div>
+        <div>
+          <div class="detail-label">Lokasi</div>
+         <div class="detail-val">Kediaman Bpk.Joko Juwono/Ibu Rinawati<br>Jl. KP. Pintu Kapuk Rt.23/Rw.09 Ds.Bojong Renged Kec.Teluknaga,<br>Kab.Tangerang, Provinsi.Banten</div>
+        </div>
+      </div>
+    </div>
+    <a href="https://maps.apple/p/PdXDUke3mgtIbS" class="btn-map">🗺 Buka Google Maps</a>
+  </div>
+
+  <!-- Terimakasih -->
+  <div class="section-box closing-box animate-scroll">
+    <svg class="box-batik" width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+      <g transform="translate(100,100)">
+        <ellipse cx="0" cy="-22" rx="7" ry="12" fill="#e8c97a" transform="rotate(0)"/>
+        <ellipse cx="0" cy="-22" rx="7" ry="12" fill="#e8c97a" transform="rotate(72)"/>
+        <ellipse cx="0" cy="-22" rx="7" ry="12" fill="#e8c97a" transform="rotate(144)"/>
+        <ellipse cx="0" cy="-22" rx="7" ry="12" fill="#e8c97a" transform="rotate(216)"/>
+        <ellipse cx="0" cy="-22" rx="7" ry="12" fill="#e8c97a" transform="rotate(288)"/>
+        <circle cx="0" cy="0" r="8" fill="#e8c97a"/>
+      </g>
+    </svg>
+    <div class="section-title">Terima Kasih</div>
+    <div class="orn-row" style="margin-bottom:14px;">
+      <div class="orn-line"></div><div class="orn-dot"></div><div class="orn-line r"></div>
+    </div>
+    <p class="closing-ayat">
+      "Dan (ingatlah), ketika Ibrahim berdoa: 'Ya Tuhanku, jadikanlah negeri ini aman dan jauhkanlah aku beserta anak cucuku daripada menyembah berhala-berhala.'"
+    </p>
+    <p class="closing-sumber">QS. Ibrahim : 35</p>
+
+    <p>
+      Merupakan suatu kehormatan dan kebahagiaan yang besar<br>
+      bagi kami apabila <strong>Bapak/Ibu/Saudara/i</strong><br>
+      berkenan hadir untuk memberikan<br>
+      doa dan restu kepada putra kami.<br><br>
+      Atas kehadiran dan doa yang tulus,<br>
+      kami mengucapkan <strong>terima kasih</strong> yang sebesar-besarnya.<br><br>
+      <em style="color:rgba(232,201,122,0.6);font-size:13px;">Wassalamu'alaikum Warahmatullahi Wabarakatuh</em>
+    </p>
+
+    <div class="orn-row" style="margin:20px 0 8px;">
+      <div class="orn-line"></div>
+      <svg width="28" height="28" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
+        <g transform="translate(14,14)">
+          <ellipse cx="0" cy="-7" rx="3" ry="5" fill="#c89b3c" transform="rotate(0)"/>
+          <ellipse cx="0" cy="-7" rx="3" ry="5" fill="#c89b3c" transform="rotate(60)"/>
+          <ellipse cx="0" cy="-7" rx="3" ry="5" fill="#c89b3c" transform="rotate(120)"/>
+          <ellipse cx="0" cy="-7" rx="3" ry="5" fill="#c89b3c" transform="rotate(180)"/>
+          <ellipse cx="0" cy="-7" rx="3" ry="5" fill="#c89b3c" transform="rotate(240)"/>
+          <ellipse cx="0" cy="-7" rx="3" ry="5" fill="#c89b3c" transform="rotate(300)"/>
+          <circle cx="0" cy="0" r="4" fill="#e8c97a"/>
+        </g>
+      </svg>
+      <div class="orn-line r"></div>
+    </div>
+
+    <p style="font-size:12px;color:rgba(232,201,122,0.5);letter-spacing:2px;text-transform:uppercase;margin-top:6px;">Hormat Kami</p>
+    <div class="closing-family">Keluarga Besar</div>
+    <div class="closing-family" style="font-size:28px;">Bpk.Joko Juwono & Ibu Rinawati</div>
+    <div class="closing-ttd">beserta keluarga</div>
+  </div>
+
+  <!-- ======================== -->
+  <!-- SECTION NOMOR REKENING  -->
+  <!-- ======================== -->
+  <div class="floral-divider animate-scroll">
+    <div class="fd-line"></div>
+    <svg width="34" height="34" viewBox="0 0 34 34" xmlns="http://www.w3.org/2000/svg">
+      <g transform="translate(17,17)">
+        <ellipse cx="0" cy="-8" rx="3.5" ry="6" fill="#c89b3c" transform="rotate(0)"/>
+        <ellipse cx="0" cy="-8" rx="3.5" ry="6" fill="#c89b3c" transform="rotate(60)"/>
+        <ellipse cx="0" cy="-8" rx="3.5" ry="6" fill="#c89b3c" transform="rotate(120)"/>
+        <ellipse cx="0" cy="-8" rx="3.5" ry="6" fill="#c89b3c" transform="rotate(180)"/>
+        <ellipse cx="0" cy="-8" rx="3.5" ry="6" fill="#c89b3c" transform="rotate(240)"/>
+        <ellipse cx="0" cy="-8" rx="3.5" ry="6" fill="#c89b3c" transform="rotate(300)"/>
+        <circle cx="0" cy="0" r="4.5" fill="#e8c97a"/>
+      </g>
+    </svg>
+    <div class="fd-line"></div>
+  </div>
+
+  <div class="section-box animate-scroll">
+    <svg class="box-batik" width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <g transform="translate(80,80)">
+        <ellipse cx="0" cy="-18" rx="6" ry="10" fill="#e8c97a" transform="rotate(0)"/>
+        <ellipse cx="0" cy="-18" rx="6" ry="10" fill="#e8c97a" transform="rotate(60)"/>
+        <ellipse cx="0" cy="-18" rx="6" ry="10" fill="#e8c97a" transform="rotate(120)"/>
+        <ellipse cx="0" cy="-18" rx="6" ry="10" fill="#e8c97a" transform="rotate(180)"/>
+        <ellipse cx="0" cy="-18" rx="6" ry="10" fill="#e8c97a" transform="rotate(240)"/>
+        <ellipse cx="0" cy="-18" rx="6" ry="10" fill="#e8c97a" transform="rotate(300)"/>
+        <circle cx="0" cy="0" r="7" fill="#e8c97a"/>
+      </g>
+    </svg>
+
+    <div class="section-title">Kirim Hadiah</div>
+    <div class="orn-row" style="margin-bottom:14px;">
+      <div class="orn-line"></div><div class="orn-dot"></div><div class="orn-line r"></div>
+    </div>
+
+    <p class="rekening-intro">
+      Bagi Bapak/Ibu/Saudara/i yang ingin memberikan<br>
+      doa dan hadiah secara digital,<br>
+      dapat melalui rekening berikut:
+    </p>
+
+    <div class="rekening-grid">
+
+      <!-- Rekening 1 -->
+      <div class="rekening-card">
+        <div class="rek-bank">🏦 Bank BCA</div>
+        <div class="rek-nomor" id="rek1">7125236596</div>
+        <div class="rek-nama">a.n. Rinawati</div>
+        <button class="btn-copy" onclick="copyRek('rek1', this)">
+          📋 Salin Nomor
+        </button>
+      </div>
+
+      <!-- Rekening 2 -->
+      <div class="rekening-card">
+        <div class="rek-bank">🏦 Bank BCA</div>
+        <div class="rek-nomor" id="rek2">7580579013</div>
+        <div class="rek-nama">a.n. Joko Juwono</div>
+        <button class="btn-copy" onclick="copyRek('rek2', this)">
+          📋 Salin Nomor
+        </button>
+      </div>
+    </div>
+
+    <p style="font-size:11px;color:rgba(232,201,122,0.45);margin-top:18px;line-height:1.8;">
+      ✨ Doa & kehadiran Anda adalah hadiah<br>terindah bagi kami ✨
+    </p>
+  </div>
+
+  <!-- ======================== -->
+  <!-- SECTION FOTO KELUARGA   -->
+  <!-- ======================== -->
+  <div class="floral-divider animate-scroll">
+    <div class="fd-line"></div>
+    <svg width="34" height="34" viewBox="0 0 34 34" xmlns="http://www.w3.org/2000/svg">
+      <g transform="translate(17,17)">
+        <ellipse cx="0" cy="-8" rx="3.5" ry="6" fill="#c89b3c" transform="rotate(0)"/>
+        <ellipse cx="0" cy="-8" rx="3.5" ry="6" fill="#c89b3c" transform="rotate(60)"/>
+        <ellipse cx="0" cy="-8" rx="3.5" ry="6" fill="#c89b3c" transform="rotate(120)"/>
+        <ellipse cx="0" cy="-8" rx="3.5" ry="6" fill="#c89b3c" transform="rotate(180)"/>
+        <ellipse cx="0" cy="-8" rx="3.5" ry="6" fill="#c89b3c" transform="rotate(240)"/>
+        <ellipse cx="0" cy="-8" rx="3.5" ry="6" fill="#c89b3c" transform="rotate(300)"/>
+        <circle cx="0" cy="0" r="4.5" fill="#e8c97a"/>
+      </g>
+    </svg>
+    <div class="fd-line"></div>
+  </div>
+
+  <div class="section-box family-photo-box animate-scroll">
+    <svg class="box-batik" width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+      <g transform="translate(100,100)">
+        <ellipse cx="0" cy="-22" rx="7" ry="12" fill="#e8c97a" transform="rotate(0)"/>
+        <ellipse cx="0" cy="-22" rx="7" ry="12" fill="#e8c97a" transform="rotate(72)"/>
+        <ellipse cx="0" cy="-22" rx="7" ry="12" fill="#e8c97a" transform="rotate(144)"/>
+        <ellipse cx="0" cy="-22" rx="7" ry="12" fill="#e8c97a" transform="rotate(216)"/>
+        <ellipse cx="0" cy="-22" rx="7" ry="12" fill="#e8c97a" transform="rotate(288)"/>
+        <circle cx="0" cy="0" r="8" fill="#e8c97a"/>
+      </g>
+    </svg>
+
+    <div class="section-title">Foto Keluarga</div>
+    <div class="orn-row" style="margin-bottom:4px;">
+      <div class="orn-line"></div><div class="orn-dot"></div><div class="orn-line r"></div>
+    </div>
+
+    <!-- ======================================================= -->
+    <!-- GANTI src="#" dengan path foto keluarga Anda            -->
+    <!-- Contoh: src="foto-keluarga.jpg"                         -->
+    <!-- Atau gunakan URL online: src="https://..."              -->
+    <!-- ======================================================= -->
+<div class="family-photo-frame" id="familyPhotoFrame">
+  <img src="image/keluarga.png" alt="Foto Keluarga" style="object-fit: contain; object-position: center; width: 100%; height: 100%; transform: scale(1.15); transform-origin: center center;">
+</div>
+
+    <p class="family-caption">
+      "Anak adalah titipan terindah dari Allah SWT,<br>
+      menjaganya adalah amanah terbesar kami."
+    </p>
+
+    <div class="orn-row" style="margin-top:18px;">
+      <div class="orn-line"></div><div class="orn-dot"></div><div class="orn-line r"></div>
+    </div>
+
+    <p style="font-size:11px;color:rgba(232,201,122,0.45);margin-top:10px;line-height:1.8;letter-spacing:1px;">
+      KELUARGA BESAR Bpk.Joko Juwono & Ibu Rinawati<br>
+    </p>
+  </div>
+
+  <!-- Footer batik strip -->
+  <div style="max-width:420px;margin:0 auto;text-align:center;padding-top:10px;">
+    <svg width="100%" height="30" viewBox="0 0 420 30" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="batikStrip" x="0" y="0" width="30" height="30" patternUnits="userSpaceOnUse">
+          <ellipse cx="15" cy="15" rx="5" ry="8" fill="none" stroke="#c89b3c" stroke-width="0.8" opacity="0.4"/>
+          <ellipse cx="15" cy="15" rx="8" ry="5" fill="none" stroke="#c89b3c" stroke-width="0.8" opacity="0.4"/>
+          <circle cx="15" cy="15" r="2" fill="#c89b3c" opacity="0.3"/>
+        </pattern>
+      </defs>
+      <rect width="420" height="30" fill="url(#batikStrip)"/>
+    </svg>
+    <p style="font-size:10px;letter-spacing:2px;color:#a07040;margin-top:14px;text-transform:uppercase;">Sabtu, 13 Juni 2026</p>
+  </div>
+
+</div>
+
+<script>
+/* ===== Scroll Animation ===== */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('show');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.animate-scroll').forEach(el => observer.observe(el));
+
+/* ===== Copy Rekening ===== */
+function copyRek(id, btn) {
+  const nomor = document.getElementById(id).innerText.replace(/\s/g, '');
+  navigator.clipboard.writeText(nomor).then(() => {
+    const orig = btn.innerHTML;
+    btn.innerHTML = '✅ Tersalin!';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.innerHTML = orig;
+      btn.classList.remove('copied');
+    }, 2000);
+  }).catch(() => {
+    // Fallback untuk browser lama
+    const el = document.createElement('textarea');
+    el.value = nomor;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+    const orig = btn.innerHTML;
+    btn.innerHTML = '✅ Tersalin!';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.innerHTML = orig;
+      btn.classList.remove('copied');
+    }, 2000);
+  });
+}
+</script>
+</body>
+</html>
